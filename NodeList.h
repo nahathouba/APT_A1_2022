@@ -4,13 +4,13 @@
 #include "Node.h"
 #include "Types.h"
 
-class NodeList {
+class NodeList
+{
 public:
-
    /*                                           */
    /* DO NOT MOFIFY ANY CODE IN THIS SECTION    */
    /*                                           */
-   
+
    // Create a New Empty List
    NodeList();
 
@@ -19,7 +19,7 @@ public:
 
    // Copy Constructor
    // Produces a DEEP COPY of the NodeList
-   NodeList(NodeList& other);
+   NodeList(NodeList &other);
 
    // Number of items in the list
    int getLength();
@@ -29,7 +29,7 @@ public:
 
    // Add a COPY node element to the BACK of the nodelist
    //    This class now has control over the pointer
-   //    And should delete the pointer if the position-distance 
+   //    And should delete the pointer if the position-distance
    //    is removed from the list
    void addBack(NodePtr newNode);
 
@@ -45,18 +45,23 @@ public:
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
 
+   // Removes the node for the given position
+   void removeNode(int i);
+
+   // Node Setter
+   void setNode(int index, Node *newNode);
 
    /* This is a suggestion of what you could use. */
    /* You can change this code.                   */
 private:
-
    // NodeList: list of node objects
    // You may assume a fixed size for M1, M2, M3
-   NodePtr    nodes[NODE_LIST_ARRAY_MAX_SIZE];
+   NodePtr nodes[NODE_LIST_ARRAY_MAX_SIZE];
    // Number of nodes currently in the NodeList
-   int      length;
+   int length;
 
-
+   // Initilises the Nodes to 0;
+   void initiliseNodeList();
 };
 
 #endif // COSC_ASS_ONE_NODE_LIST
