@@ -19,7 +19,7 @@ public:
    // Clean-up
    ~PathPlanner();
 
-   // Set The initial position
+   // Set The initial and ending position
    void initialPosition(int row, int col);
 
    // Method for Milestone 2

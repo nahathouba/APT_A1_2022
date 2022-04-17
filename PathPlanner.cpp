@@ -11,7 +11,7 @@ PathPlanner::PathPlanner(Env env, int rows, int cols)
         for (int col = 0; col < ENV_DIM; col++)
         {
             // Initilising the Enviroment and assignning their respective values
-            this->env[row][col] = 0;
+            // this->env[row][col] = 0;
             this->env[row][col] = env[row][col];
         }
     }
@@ -31,19 +31,23 @@ void PathPlanner::initialPosition(int row, int col)
     this->sRow = row;
     this->sCol = col;
 }
+
 void PathPlanner::endingPosition(int row, int col)
 {
     this->goalRow = row;
     this->goalCol = col;
 }
+
 NodeList *PathPlanner::getReachableNodes()
 {
+    forwardSearch();
     return new NodeList(*nodesExplored);
 }
 
 NodeList *PathPlanner::getPath()
 {
-    NodeList *list = getReachableNodes();
+    // NodeList *list = getReachableNodes();
+    NodeList *list = new NodeList(*nodesExplored);
     NodeList *backList = new NodeList();
     NodeList *finalList = new NodeList();
     Node *nextNode = new Node(*list->get(list->getLength() - 1));

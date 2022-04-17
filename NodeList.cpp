@@ -5,18 +5,18 @@
 NodeList::NodeList()
 {
     this->length = 0;
-    initiliseNodeList();
-    // for (int i = 0; i < NODE_LIST_ARRAY_MAX_SIZE; i++)
-    // {
-    //     nodes[i] = 0;
-    // }
+    // initiliseNodeList();
+    for (int i = 0; i < NODE_LIST_ARRAY_MAX_SIZE; i++)
+    {
+        nodes[i] = nullptr;
+    }
 }
 
 NodeList::~NodeList()
 {
     for (int i = 0; i < NODE_LIST_ARRAY_MAX_SIZE; i++)
     {
-        if (nodes[i] != 0)
+        if (nodes[i] != nullptr)
             delete nodes[i];
     }
 }
@@ -24,7 +24,10 @@ NodeList::~NodeList()
 NodeList::NodeList(NodeList &other)
 {
     length = other.length;
-    initiliseNodeList();
+    for (int i = 0; i < NODE_LIST_ARRAY_MAX_SIZE; i++)
+    {
+        nodes[i] = nullptr;
+    }
 
     for (int i = 0; i < length; i++)
     {
@@ -50,7 +53,7 @@ void NodeList::addBack(NodePtr newNode)
 
 bool NodeList::containsNode(NodePtr node)
 {
-    for (int i = 0; i < NODE_LIST_ARRAY_MAX_SIZE; i++)
+    for (int i = 0; i < length; i++)
     {
         // Checks whether the given node is same or not
         bool isSame = node->sameNode(nodes[i]);
